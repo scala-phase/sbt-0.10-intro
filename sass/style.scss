@@ -67,7 +67,7 @@ h3
 
 a
 {
-    font-size: $body_font_size - 10px;
+    font-size: $body_font_size - 5px;
     font-style: italic;
 }
 
@@ -165,6 +165,7 @@ a
     p
     {
         line-spacing: 1.2em;
+        margin-bottom: 20px;
         text-align: left !important;
         font-size: $body_font_size;
     }

@@ -102,7 +102,7 @@ ArdenTex, Inc.
 
 # Settings, in more detail
 
-General form:
+### General form:
 
     key in scope bind (dependencies) value
 
@@ -110,10 +110,19 @@ General form:
 
 ### Example:
 
-    libraryDependencies <<= libraryDependencies apply { (deps: Seq[ModuleID]) =>
-       // Note that :+ is a method on Seq that appends a single value
-       deps :+ ("junit" % "junit" % "4.8" % "test")
+    libraryDependencies <<= libraryDependencies apply {
+      (deps: Seq[ModuleID]) =>
+      // Note that :+ is a method on Seq that appends a single value
+      deps :+ ("junit" % "junit" % "4.8" % "test")
     }
+
+*Or just:*
+
+    libraryDependencies <<= libraryDependencies apply { deps =>
+      // Note that :+ is a method on Seq that appends a single value
+      deps :+ ("junit" % "junit" % "4.8" % "test")
+    }
+
 
 !SLIDE incremental transition=fade
 
@@ -221,8 +230,7 @@ All others can be implemented in terms of `<<=`
 
 Declare JUnit as a dependency using `<<=`:
 
-    libraryDependencies <<= libraryDependencies apply { (deps: Seq[ModuleID]) =>
-       // Note that :+ is a method on Seq that appends a single value
+    libraryDependencies <<= libraryDependencies apply { deps =>
        deps :+ ("junit" % "junit" % "4.8" % "test")
     }
 
@@ -253,7 +261,7 @@ Because the `scalaVersion` setting is used, the method is `<+=`, not `+=`
 Add a dependency on the Scala compiler to the current list of dependencies.
 
 Because another setting (`scalaVersion`) is used and a `Seq` is appended,
-use `<++=`.
+use `<++=`
 
     libraryDependencies <++= scalaVersion { sv =>
       ("org.scala-lang" % "scala-compiler" % sv) ::
@@ -268,7 +276,8 @@ use `<++=`.
 
 * Tasks are like settings, except they don't cache.
 * They're executed every time they're invoked.
-* There's some talk of getting rid of settings entirely.
+* There's some talk of getting rid of settings entirely and making everything
+  a task.
 
 !SLIDE bullets incremental transition=fade
 
@@ -292,9 +301,24 @@ use `<++=`.
   * sbt-izpack
   * sbt-lwm
   * sbt-editsource
+  * sbt-growl-plugin
+  * xsbt-proguard-plugin
+* Many more here: <https://github.com/harrah/xsbt/wiki/sbt-0.10-plugins-list>
 
-!SLIDE incremental transition=fade
+!SLIDE transition=fade
 
 # Let's see an example.
 
 (cut to Emacs session...)
+
+Example used is: <https://github.com/bmc/grizzled-scala/blob/master/build.sbt>
+
+!SLIDE transition=fade
+
+# Credits and links
+
+* Eugene Yokota, Doug Tangren, Rose Toomey: [Beginning SBT 0.10][]
+* SBT GitHub page and Wiki: <https://github.com/harrah/xsbt/>
+
+[Beginning SBT 0.10]: http://sbt010.lessis.me/#0
+
