@@ -319,6 +319,7 @@ Example used is: <https://github.com/bmc/grizzled-scala/blob/master/build.sbt>
 
 * Eugene Yokota, Doug Tangren, Rose Toomey: [Beginning SBT 0.10][]
 * SBT GitHub page and Wiki: <https://github.com/harrah/xsbt/>
+* *Full Configuration With SBT*: <http://www.fisharefriends.us/blog/2011-10-11-full-configuration-with-sbt/>
 
 [Beginning SBT 0.10]: http://sbt010.lessis.me/#0
 
